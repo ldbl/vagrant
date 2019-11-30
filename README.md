@@ -54,7 +54,7 @@ vagrant up
 ```
 
 ### Testing nginx
-Keep alived works in Active / Passive mode in MASTER mode so it will show only the resule from only on nginx.
+Keep alived works in Active / Passive mode in MASTER mode so it will show only the response from only one nginx backend.
 
 Test nginx on virtual IP
 ```
