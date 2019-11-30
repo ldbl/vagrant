@@ -13,12 +13,10 @@
 
 [nginx:vars]
 ansible_ssh_user=vagrant
-priority=100
 interface=eth1
 virtual_router_id=1
 virtual_ipaddress=192.168.29.50
 ansible_ssh_private_key_file=~/.vagrant.d/insecure_private_key
-nginx_index_text=nginx1
 nginx_index_text=nginx1
 nginx1_ip=192.168.29.2
 nginx2_ip=192.168.29.3
