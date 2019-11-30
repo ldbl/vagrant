@@ -1,0 +1,55 @@
+---
+# tasks file for nginx
+
+- name: Add epel-release repo
+  yum:
+    name: epel-release
+    state: present
+
+- name: Ensure nginx is present.
+  yum:
+    name: nginx 
+    state: present
+
+- name: Remove nginx default configs
+  file:
+    state: absent
+    path: "/etc/nginx"
+
+- name: Creates nginx config directory
+  file:
+    path: /etc/nginx
+    state: directory
+
+- name: Copy nginx mime types
+  copy:
+    src: mime.types
+    dest: /etc/nginx
+    owner: nginx
+    group: nginx
+    mode: '0644'
+    force: true
+
+- name: Copying nginx.conf
+  template: 
+    src: nginx.conf.j2 
+    dest: /etc/nginx/nginx.conf 
+    owner: nginx  
+    group: nginx 
+    mode: '0644'
+  notify: restart nginx
+
+- name: Copying index.html
+  template: 
+    src: index.html.j2 
+    dest: /usr/share/nginx/html/index.html 
+    owner: nginx  
+    group: nginx 
+    mode: '0644'
+
+- name: Enable the nginx service
+  service:
+    name: nginx
+    state: started
+    enabled: true
+

@@ -1,0 +1,30 @@
+---
+- hosts: nginx1
+  user: root
+  become: true
+  become_user: root
+  roles:
+    - firewall
+    - keepalive
+    - nginx
+    - haproxy
+
+- hosts: nginx2
+  user: root
+  become: true
+  become_user: root
+  roles:
+    - firewall
+    - keepalive
+    - nginx
+    - haproxy
+
+- hosts: nginx3
+  user: root
+  become: true
+  become_user: root
+  roles:
+    - firewall
+    - keepalive
+    - nginx
+    - haproxy

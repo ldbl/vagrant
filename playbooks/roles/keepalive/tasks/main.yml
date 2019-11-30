@@ -1,0 +1,13 @@
+---
+# tasks file for keepalive
+- name: Ensure Keepalived is present.
+  yum:
+    name: keepalived
+    state: present
+
+- name: Copying keepalived.conf
+  template: src=keepalived.conf.j2 dest=/etc/keepalived/keepalived.conf
+  notify: restart keepalived
+
+- name: Enable keepalived to be started at boot
+  service: name=keepalived enabled=yes state=started

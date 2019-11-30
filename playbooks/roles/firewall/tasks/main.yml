@@ -1,0 +1,42 @@
+---
+
+- name: update yum cache
+  yum:
+    update_cache: true
+
+- name: Ensure firewalld is present.
+  yum:
+    name: firewalld
+    state: present
+
+
+- name: Ensure  python-firewall is present.
+  yum:
+    name: python-firewall
+    state: present
+
+
+- name: enable https 
+  firewalld:
+    service: https
+    permanent: yes
+    state: enabled
+
+- name: enable http
+  firewalld:
+    service: http
+    permanent: yes
+    state: enabled
+
+- name: enable 8080
+  firewalld:
+    port: 8080/tcp
+    permanent: yes
+    state: enabled
+
+- name: Enable the firewalld service
+  service:
+    name: firewalld
+    state: restarted
+    enabled: true
+

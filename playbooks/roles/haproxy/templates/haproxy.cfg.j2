@@ -1,0 +1,22 @@
+global
+  #debug                                   # uncomment to enable debug mode for HAProxy
+
+defaults
+  mode http                                # enable http mode which gives of layer 7 filtering
+  timeout connect 5000ms                   # max time to wait for a connection attempt to a server to succeed
+  timeout client 50000ms                   # max inactivity time on the client side
+  timeout server 50000ms                   # max inactivity time on the server side
+  log     global
+  mode    http
+  option  httplog
+  option  dontlognull
+
+backend nginx                              # define a group of backend servers to handle legacy requests
+  balance roundrobin                       #Balance round robin
+  server nginx1 {{nginx1_ip}}:80 check	   # add a server to this backend
+  server nginx2 {{nginx2_ip}}:80 check     # add a server to this backend
+  server nginx3 {{nginx3_ip}}:80 check     # add a server to this backend
+
+
+frontend app *:8080                        # define what port to listed to for HAProxy
+  default_backend nginx                    # set the default server for all request
