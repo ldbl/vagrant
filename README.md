@@ -98,6 +98,8 @@ nginx2
 nginx3
 nginx1
 ```
+**It show all 3 nginx VM's**
+
 
 ### Stop haproxy on Virtual IP address 
 ```
@@ -113,3 +115,4 @@ nginx2
 nginx1
 nginx2
 ```
+**It shows only 2 nginx VM's**
