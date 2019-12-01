@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
     v.cpus = 1
   end
 
-  # Define two VMs with static private IP addresses.
+  # Define VMs with static private IP addresses.
   boxes = [
     { :name => "nginx1", :ip => "192.168.29.2" },
     { :name => "nginx2", :ip => "192.168.29.3" },
