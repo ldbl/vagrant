@@ -116,3 +116,61 @@ nginx1
 nginx2
 ```
 **It shows only 2 nginx VM's**
+
+
+### Hey tests on nginx
+```
+hey http://192.168.29.2
+
+Summary:
+  Total:	0.0321 secs
+  Slowest:	0.0244 secs
+  Fastest:	0.0004 secs
+  Average:	0.0052 secs
+  Requests/sec:	6226.0482
+  
+  Total data:	1400 bytes
+  Size/request:	7 bytes
+
+Response time histogram:
+  0.000 [1]	|
+  0.003 [133]	|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+  0.005 [10]	|■■■
+  0.008 [9]	|■■■
+  0.010 [15]	|■■■■■
+  0.012 [1]	|
+  0.015 [1]	|
+  0.017 [3]	|■
+  0.020 [6]	|■■
+  0.022 [14]	|■■■■
+  0.024 [7]	|■■
+```
+
+### Hey tests on haproxy
+```
+hey http://192.168.29.50:8080
+
+Summary:
+  Total:	0.0634 secs
+  Slowest:	0.0306 secs
+  Fastest:	0.0020 secs
+  Average:	0.0145 secs
+  Requests/sec:	3156.9095
+  
+  Total data:	1400 bytes
+  Size/request:	7 bytes
+
+Response time histogram:
+  0.002 [1]	|■
+  0.005 [1]	|■
+  0.008 [25]	|■■■■■■■■■■■■■■■■■■■■■
+  0.011 [37]	|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+  0.013 [35]	|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+  0.016 [25]	|■■■■■■■■■■■■■■■■■■■■■
+  0.019 [13]	|■■■■■■■■■■■
+  0.022 [47]	|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+  0.025 [11]	|■■■■■■■■■
+  0.028 [0]	|
+  0.031 [5]	|■■■■
+
+```
